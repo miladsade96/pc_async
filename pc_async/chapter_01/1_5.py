@@ -3,6 +3,7 @@
 """
 
 import time
+import threading
 
 
 def print_fib(number: int) -> None:
@@ -25,6 +26,27 @@ def print_fib(number: int) -> None:
 def fibs_no_threading():
     print_fib(40)
     print_fib(41)
+
+
+start = time.time()
+fibs_no_threading()
+end = time.time()
+
+print(f"Completed in {end - start:.4f} seconds.")
+
+# ----------------------------------------------------------------------------------
+
+
+# Multi-threading Section
+def fibs_with_threads():
+    forty_thread = threading.Thread(target=print_fib, args=(40,))
+    forth_one_thread = threading.Thread(target=print_fib, args=(41,))
+
+    forty_thread.start()
+    forth_one_thread.start()
+
+    forty_thread.join()
+    forth_one_thread.join()
 
 
 start = time.time()
