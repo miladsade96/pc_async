@@ -13,3 +13,15 @@ def read_status() -> None:
     """
     response = requests.get("https://elns.info")
     print(response.status_code)
+
+
+# Synchronous section
+sync_start = time.time()
+
+read_status()
+read_status()
+
+sync_end = time.time()
+print(f"running synchronously took {sync_end - sync_start:.4f} seconds.")
+
+# ----------------------------------------------------------------------------------
