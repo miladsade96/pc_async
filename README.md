@@ -16,7 +16,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/EverLookNeverSee/pc_async)
 
 
-### This repository is an educational purpose repository for your python concurrency journey that contains useful notes and code examples.
+### This repository is an educational purpose repository for your python concurrency learning journey that contains useful notes and code examples.
 
 ### Table of contents:
 * Chapter 01 - Getting to know asyncio:
