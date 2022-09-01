@@ -12,3 +12,26 @@ server_address = ('127.0.0.1', 8000)    # Setting the address of the socket
 server_socket.bind(server_address)
 server_socket.listen()      # Listening for connection
 server_socket.setblocking(False)    # Marking the server socket as non-blocking
+
+connections = list()
+
+try:
+    while True:
+        connection, client_address = server_socket.accept()
+        connection.setblocking(False)   # Mark the client socket as non-blocking
+        print(f"I got a connection from {client_address}!")
+        connections.append(connection)
+
+        for connection in connections:
+            buffer = b''
+            while buffer != b'\r\n':
+                data = connection.recv(2)
+                if not data:
+                    break
+                else:
+                    print(f"I got data {data}!")
+                    buffer += data
+            print(f"All the data is {buffer}")
+            connection.send(buffer)
+finally:
+    server_socket.close()
